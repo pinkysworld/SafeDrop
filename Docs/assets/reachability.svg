@@ -1,0 +1,30 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' role='img' aria-labelledby='ttl desc'>
+  <title id='ttl'>Reachability Flow</title>
+  <desc id='desc'>Tiered reachability flow from direct port mapping to relay fallback.</desc>
+  <rect width='1600' height='900' rx='32' fill='#081120'/>
+  <text x='70' y='80' fill='white' font-size='34' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Reachability flow when the home PC is online</text>
+  <text x='70' y='118' fill='#93c5fd' font-size='18' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Direct path first, relay last, all path choices recorded in signed descriptors.</text>
+  <rect x='70' y='180' width='280' height='110' rx='22' fill='rgba(37,99,235,0.14)' stroke='#2563eb' stroke-width='2.5'/>
+  <text x='100' y='222' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Owner host</text>
+  <text x='100' y='254' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Laptop, desktop, or Raspberry Pi</text>
+  <rect x='1250' y='180' width='280' height='110' rx='22' fill='rgba(16,185,129,0.14)' stroke='#10b981' stroke-width='2.5'/>
+  <text x='1280' y='222' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Recipient</text>
+  <text x='1280' y='254' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Browser or desktop client</text>
+  <rect x='430' y='180' width='740' height='96' rx='22' fill='rgba(255,255,255,0.05)' stroke='#64748b' stroke-width='2'/>
+  <text x='460' y='220' fill='white' font-size='22' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Published reachability descriptor</text>
+  <text x='460' y='248' fill='#cbd5e1' font-size='15' font-family='ui-monospace, SFMono-Regular, Menlo, monospace'>share_url || path_type || epoch || host_key || continuity_proof</text>
+  <path d='M350 235 H430' stroke='#2563eb' stroke-width='4'/><polygon points='430,235 418,228 418,242' fill='#2563eb'/>
+  <path d='M1170 235 H1250' stroke='#10b981' stroke-width='4'/><polygon points='1250,235 1238,228 1238,242' fill='#10b981'/>
+  <rect x='500' y='360' width='600' height='92' rx='22' fill='rgba(14,165,233,0.12)' stroke='#0ea5e9' stroke-width='2.5'/>
+  <text x='532' y='396' fill='white' font-size='23' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>1. Direct public mapping</text>
+  <text x='532' y='423' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>UPnP or NAT-PMP plus signed external verification probe</text>
+  <rect x='500' y='490' width='600' height='92' rx='22' fill='rgba(245,158,11,0.12)' stroke='#f59e0b' stroke-width='2.5'/>
+  <text x='532' y='526' fill='white' font-size='23' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>2. ICE-assisted direct path</text>
+  <text x='532' y='553' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>STUN candidate discovery with direct connection attempt</text>
+  <rect x='500' y='620' width='600' height='92' rx='22' fill='rgba(244,63,94,0.12)' stroke='#f43f5e' stroke-width='2.5'/>
+  <text x='532' y='656' fill='white' font-size='23' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>3. Encrypted relay fallback</text>
+  <text x='532' y='683' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Ciphertext forwarding and optional relay honesty evidence</text>
+  <path d='M800 276 V360' stroke='#94a3b8' stroke-width='3'/><polygon points='800,360 793,348 807,348' fill='#94a3b8'/>
+  <path d='M800 452 V490' stroke='#94a3b8' stroke-width='3'/><polygon points='800,490 793,478 807,478' fill='#94a3b8'/>
+  <path d='M800 582 V620' stroke='#94a3b8' stroke-width='3'/><polygon points='800,620 793,608 807,608' fill='#94a3b8'/>
+</svg>

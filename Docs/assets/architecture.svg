@@ -1,0 +1,20 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' role='img' aria-labelledby='ttl desc'>
+  <title id='ttl'>SafeDrop Architecture</title>
+  <desc id='desc'>Seven-layer SafeDrop architecture diagram.</desc>
+  <defs>
+    <linearGradient id='bg' x1='0' x2='1'>
+      <stop offset='0%' stop-color='#081120'/>
+      <stop offset='100%' stop-color='#0f1d36'/>
+    </linearGradient>
+  </defs>
+  <rect width='1600' height='1000' fill='url(#bg)' rx='32'/>
+  <text x='70' y='80' fill='white' font-size='34' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>SafeDrop layered architecture</text>
+  <text x='70' y='118' fill='#a5b4fc' font-size='18' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Single executable, proof-aware, home-hosted secure file sharing.</text>
+  <rect x='70' y='170' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#2563eb' stroke-width='2.5'/><text x='100' y='204' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Protocol facade</text><text x='100' y='233' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Web UI, REST, upload/download links</text>
+  <rect x='70' y='280' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#0ea5e9' stroke-width='2.5'/><text x='100' y='314' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Content-addressed storage core</text><text x='100' y='343' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Chunks, manifests, Merkle DAG</text>
+  <rect x='70' y='390' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#10b981' stroke-width='2.5'/><text x='100' y='424' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Dynamic access engine</text><text x='100' y='453' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>UPnP, ICE, relay, continuity</text>
+  <rect x='70' y='500' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#f43f5e' stroke-width='2.5'/><text x='100' y='534' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Verifiability layer</text><text x='100' y='563' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Receipts, audit log, deletion evidence</text>
+  <rect x='70' y='610' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#8b5cf6' stroke-width='2.5'/><text x='100' y='644' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Privacy and policy layer</text><text x='100' y='673' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Aliases, expiry, Wasm rules</text>
+  <rect x='70' y='720' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#f59e0b' stroke-width='2.5'/><text x='100' y='754' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Energy and operations layer</text><text x='100' y='783' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Battery-aware scheduling and forecasting</text>
+  <rect x='70' y='830' width='1460' height='92' rx='22' fill='rgba(255,255,255,0.06)' stroke='#64748b' stroke-width='2.5'/><text x='100' y='864' fill='white' font-size='24' font-family='system-ui, -apple-system, Segoe UI, sans-serif' font-weight='700'>Explanation console</text><text x='100' y='893' fill='#cbd5e1' font-size='16' font-family='system-ui, -apple-system, Segoe UI, sans-serif'>Human-readable evidence and status</text>
+</svg>
