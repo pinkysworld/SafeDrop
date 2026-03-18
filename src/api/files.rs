@@ -5,12 +5,14 @@ use std::sync::Arc;
 
 use crate::error::AppError;
 use crate::evidence::audit::{AuditLog, EventKind};
+use crate::share::ShareStore;
 use crate::storage::chunk::ChunkStore;
 use crate::storage::manifest;
 
 pub struct AppState {
     pub chunk_store: ChunkStore,
     pub audit_log: AuditLog,
+    pub share_store: ShareStore,
     pub config: crate::config::Config,
 }
 

@@ -4,7 +4,22 @@ All notable changes to SafeDrop will be documented in this file.
 
 ## [Unreleased]
 
-### Added
+### Added — Sprint 2: Link Lifecycle
+- Share issuance with token-based capability URLs (`POST /api/v1/shares`)
+- Share metadata retrieval (`GET /api/v1/shares/{id}`)
+- Share listing (`GET /api/v1/shares`)
+- Share revocation/expiry (`POST /api/v1/shares/{id}/expire`)
+- Full file download via capability token (`GET /s/{token}`)
+- Per-segment resumable download (`GET /s/{token}?segment=N`)
+- Resume info endpoint for interrupted transfers (`POST /api/v1/shares/{id}/resume`)
+- Segment acknowledgment with hash verification (`POST /api/v1/shares/{id}/ack`)
+- Delivery receipt generation with BLAKE3 integrity hash
+- Evidence retrieval endpoint (`GET /api/v1/evidence/{share_id}`)
+- Download limit enforcement with automatic share exhaustion
+- Filesystem-backed ShareStore with per-share JSON persistence
+- 8 new integration tests covering full share lifecycle
+
+### Added — Sprint 0 + Sprint 1
 - Project repository structure and documentation
 - Full specification: AGENTS.md, CODEX_MASTER_INSTRUCTIONS.md, API_SPEC.md, DATA_MODEL.md, THREAT_MODEL.md
 - Rust project with Axum web framework

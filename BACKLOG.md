@@ -1,6 +1,6 @@
 # SafeDrop Backlog
 
-Last updated: 2026-03-14
+Last updated: 2026-03-18
 
 ## Sprint 0 — Repository & Vocabulary Freeze
 
@@ -20,9 +20,9 @@ Last updated: 2026-03-14
 
 | ID | Title | Agent | Status | Acceptance |
 |----|-------|-------|--------|------------|
-| SD-005 | Implement share issuance and expiry | evidence | ⬚ Planned | Expired shares rejected and logged |
-| SD-006 | Add resumable segmented transfer | storage | ⬚ Planned | Interrupted transfers restart safely |
-| SD-007 | Add final delivery receipts | evidence | ⬚ Planned | Human-readable completion evidence |
+| SD-005 | Implement share issuance and expiry | evidence | ✅ Done | Expired shares rejected and logged |
+| SD-006 | Add resumable segmented transfer | storage | ✅ Done | Interrupted transfers restart safely |
+| SD-007 | Add final delivery receipts | evidence | ✅ Done | Human-readable completion evidence |
 
 ## Sprint 3 — Reachability
 

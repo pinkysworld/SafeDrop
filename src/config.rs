@@ -33,4 +33,12 @@ impl Config {
     pub fn audit_dir(&self) -> PathBuf {
         self.data_dir.join("audit")
     }
+
+    pub fn shares_dir(&self) -> PathBuf {
+        self.data_dir.join("shares")
+    }
+
+    pub fn receipts_dir(&self) -> PathBuf {
+        self.data_dir.join("receipts")
+    }
 }
