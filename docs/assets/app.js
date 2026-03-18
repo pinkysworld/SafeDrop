@@ -1,86 +1,127 @@
 /* SafeDrop - Site JavaScript */
 
-function html(strings, ...values) {
-  return strings.map((s, i) => s + (values[i] ?? '')).join('');
-}
-
 function initNav() {
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
 
-  toggle.addEventListener('click', () => {
+  toggle.addEventListener('click', function () {
     toggle.classList.toggle('open');
     links.classList.toggle('open');
     document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
   });
 
-  const dropdowns = links.querySelectorAll('.nav-dropdown');
-  dropdowns.forEach(dd => {
-    const trigger = dd.querySelector('.nav-dropdown-trigger');
-    trigger.addEventListener('click', (e) => {
+  var dropdowns = links.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(function (dd) {
+    var trigger = dd.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function (e) {
       if (window.innerWidth > 768) return;
       e.preventDefault();
       dd.classList.toggle('open');
     });
-  });  });  });  erySelectorAll('a[href]').forEach(a => {
-    a.addEventListener('click', () => {
+  });
+
+  links.querySelectorAll('a[href]').forEach(function (a) {
+    a.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         toggle.classList.remove('open');
         links.classList.remove('open');
-        document.body.style.ov        document.body.style.ov        document.e = document.body.dataset.page;
-  if (pag  if (pag  if (pag  if (pag  if (pag  if (pag  ifh(a => {
-      const href = a.getAttribute('href');
-      if (href === page + '.html' || (page     'index' && href === 'index.html')) {
-            assList.add('active');
-                   
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  var page = document.body.dataset.page;
+  if (page) {
+    links.querySelectorAll('a').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href === page + '.html' || (page === 'index' && href === 'index.html')) {
+        a.classList.add('active');
+      }
+    });
+  }
 }
 
 function initReveal() {
-  const els = document.querySelectorAll('.reveal:not(.visible)');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var els = document.querySelectorAll('.reveal:not(.visible)');
+  if (!els.length) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');        entry.target.classList.add('vist);
-                               d: 0.08, rootMargin: '0px 0px -40px 0px' });
-  els.forEach((el, i) => {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el, i) {
     el.style.transitionDelay = Math.min(i * 0.05, 0.3) + 's';
     observer.observe(el);
   });
 }
 
-function cardFfunction cardFfunction card<article class="track-card reveal">' +
+function cardForTrack(track) {
+  return '<article class="track-card reveal">' +
     '<div class="track-meta">' +
     '<span class="meta-pill track-id">' + track.id + '</span>' +
-    '<span class="meta-pill">' + track.category + '</spa    '<span class="meta-pill">' + track.category + '</ + '</span>' +
+    '<span class="meta-pill">' + track.category + '</span>' +
+    '<span class="meta-pill">' + track.priority + '</span>' +
     '<span class="meta-pill">' + track.difficulty + '</span>' +
     '</div>' +
     '<h3>' + track.title + '</h3>' +
     '<p>' + track.summary + '</p>' +
     '<ul>' +
-    '<li><strong>Methods:</strong> ' +    '<li><strong>Methods:</strong> ' +    '<li><sts:</strong> ' + track.metrics + '</li>' +
-    '<li><strong>First wedge:</strong> ' + track.wedge + '</    '<li>  '</ul></article>';
-}}}}}}}}}}}}}}}}}rFeaturedTracks() {
-  const target = document.querySelector('[data-featured-tracks]');
-  const wanted = ['R06','R07','R02','R11','R12','R44','R47','R50'];
-  con  con  con  con  con  (id => window.SAFEDROP_TRACKS.find(t => t.id === id)).filter(Boolean);
-  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  ta  t {
-  const target = document.querySele  const target = document.querySele  const target = documeROP_BUNDL  const target = document.querySele  const target = document.querySele  const target = documeROP_BUNDL  const target = d reveal">' +
+    '<li><strong>Methods:</strong> ' + track.methods + '</li>' +
+    '<li><strong>Metrics:</strong> ' + track.metrics + '</li>' +
+    '<li><strong>First wedge:</strong> ' + track.wedge + '</li>' +
+    '</ul></article>';
+}
+
+function renderFeaturedTracks() {
+  var target = document.querySelector('[data-featured-tracks]');
+  if (!target || !window.SAFEDROP_TRACKS) return;
+  var wanted = ['R06', 'R07', 'R02', 'R11', 'R12', 'R44', 'R47', 'R50'];
+  var items = wanted.map(function (id) {
+    return window.SAFEDROP_TRACKS.find(function (t) { return t.id === id; });
+  }).filter(Boolean);
+  target.innerHTML = items.map(cardForTrack).join('');
+}
+
+function renderBundles() {
+  var target = document.querySelector('[data-bundle-grid]');
+  if (!target || !window.SAFEDROP_BUNDLES) return;
+  target.innerHTML = window.SAFEDROP_BUNDLES.map(function (bundle) {
+    return '<article class="bundle-card reveal">' +
       '<div class="kicker">Research bundle</div>' +
-      '<h3>' + bundle      '<h3>' + bundle      >' + bundle.focus + '</p>' +
-      '<div class="tag-list">      '<div class="tag-list">      '<div class="tag-list">      '<div class="tag-list">  + '</div>' +
-      '<p class="smal      '<p class="smal      '<p class="smal      '<p class="smal      '<p class=
-didate_paper + '</p>' +
+      '<h3>' + bundle.name + '</h3>' +
+      '<p>' + bundle.focus + '</p>' +
+      '<div class="tag-list">' +
+      bundle.tracks.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('') +
+      '</div>' +
+      '<p class="small-note">' + bundle.candidate_paper + '</p>' +
       '</article>';
   }).join('');
 }
 
 function renderResearchGrid() {
-  const grid = d  const grid = d  const grid = d  const gr]');
-  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  i  i  i('[data-track-filt  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  nst render =   i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  i  i  i('[data-track-filt  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich =k.title + ' ' + track.category + ' ' + track.bundle + ' '  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docategoryHi  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ich = docume  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  i  ices(q);
+  var grid = document.querySelector('[data-research-grid]');
+  if (!grid || !window.SAFEDROP_TRACKS) return;
+  var search = document.querySelector('[data-track-search]');
+  var filter = document.querySelector('[data-track-filter]');
+  var count = document.querySelector('[data-track-count]');
+
+  var render = function () {
+    var q = (search ? search.value : '').toLowerCase();
+    var f = filter ? filter.value : 'all';
+    var items = window.SAFEDROP_TRACKS.filter(function (track) {
+      var categoryHit = f === 'all' || track.category === f || track.priority === f;
+      var text = (track.id + ' ' + track.title + ' ' + track.category + ' ' + track.bundle + ' ' +
+        track.summary + ' ' + track.methods + ' ' + track.priority).toLowerCase();
+      var queryHit = !q || text.indexOf(q) !== -1;
       return categoryHit && queryHit;
     });
     grid.innerHTML = items.map(cardForTrack).join('');
-    if (count) count.textCont    if (count)ngth + ' tracks shown';
+    if (count) count.textContent = items.length + ' tracks shown';
     initReveal();
   };
   if (search) search.addEventListener('input', render);
@@ -88,10 +129,10 @@ function renderResearchGrid() {
   render();
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', function () {
   initNav();
   renderFeaturedTracks();
   renderBundles();
   renderResearchGrid();
-  requestAnimationFrame(() => initReveal());
+  requestAnimationFrame(function () { initReveal(); });
 });
