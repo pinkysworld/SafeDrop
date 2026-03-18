@@ -41,4 +41,8 @@ impl Config {
     pub fn receipts_dir(&self) -> PathBuf {
         self.data_dir.join("receipts")
     }
+
+    pub fn network_dir(&self) -> PathBuf {
+        self.data_dir.join("network")
+    }
 }

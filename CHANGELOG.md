@@ -4,6 +4,18 @@ All notable changes to SafeDrop will be documented in this file.
 
 ## [Unreleased]
 
+### Added — Sprint 3: Reachability
+- Progressive reachability engine with fallback chain: Direct → UPnP/NAT-PMP → External Probe → Relay
+- UPnP/NAT-PMP gateway discovery and automatic port mapping via `igd-next` (SD-008)
+- External TCP reachability probe for verification (SD-009)
+- Encrypted relay fallback skeleton with session management (SD-010)
+- Reachability descriptor with BLAKE3 integrity hash and JSON persistence
+- `POST /api/v1/reachability/check` — run full reachability check (SD-011)
+- `GET /api/v1/reachability/status` — retrieve latest descriptor (SD-011)
+- Reachability events recorded in audit log (`ReachabilityConfirmed`)
+- Network configuration directory (`data_dir/network/`)
+- 7 new integration tests covering reachability check, status, descriptor persistence
+
 ### Added — Sprint 2: Link Lifecycle
 - Share issuance with token-based capability URLs (`POST /api/v1/shares`)
 - Share metadata retrieval (`GET /api/v1/shares/{id}`)

@@ -28,10 +28,10 @@ Last updated: 2026-03-18
 
 | ID | Title | Agent | Status | Acceptance |
 |----|-------|-------|--------|------------|
-| SD-008 | Implement UPnP/NAT-PMP attempts | network | ⬚ Planned | Reachability attempt logged |
-| SD-009 | Build external signed reachability probe | network | ⬚ Planned | Descriptor proves selected path |
-| SD-010 | Encrypted relay fallback skeleton | network | ⬚ Planned | Relay has no plaintext access |
-| SD-011 | Publish reachability descriptor API | network | ⬚ Planned | Recipient sees path type |
+| SD-008 | Implement UPnP/NAT-PMP attempts | network | ✅ Done | Reachability attempt logged |
+| SD-009 | Build external signed reachability probe | network | ✅ Done | Descriptor proves selected path |
+| SD-010 | Encrypted relay fallback skeleton | network | ✅ Done | Relay has no plaintext access |
+| SD-011 | Publish reachability descriptor API | network | ✅ Done | Recipient sees path type |
 
 ## Sprint 4 — Explainability & Polish
 

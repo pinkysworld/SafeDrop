@@ -58,6 +58,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/s/{token}", get(safedrop::api::download::download_by_token))
         // Evidence (Sprint 2)
         .route("/api/v1/evidence/{share_id}", get(safedrop::api::download::get_evidence))
+        // Reachability (Sprint 3)
+        .route("/api/v1/reachability/check", post(safedrop::api::reachability::check_reachability))
+        .route("/api/v1/reachability/status", get(safedrop::api::reachability::reachability_status))
         .layer(CorsLayer::permissive())
         .layer(TraceLayer::new_for_http())
         .with_state(state);
