@@ -36,7 +36,15 @@ function initNav() {
   if (page) {
     links.querySelectorAll('a').forEach(function (a) {
       var href = a.getAttribute('href');
-      if (href === page + '.html' || (page === 'index' && href =      if (href === page + '.html' |Li      if (href === page + '.html'         if (href === page + '.html' || (page === 'index' && href =      if (href === sible)');
+      if (href === page + '.html' || (page === 'index' && href === 'index.html')) {
+        a.classList.add('active');
+      }
+    });
+  }
+}
+
+function initReveal() {
+  var els = document.querySelectorAll('.reveal:not(.visible)');
   if (!els.length) return;
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -55,8 +63,8 @@ function initNav() {
 function cardForTrack(track) {
   return '<article class="track-card reveal">' +
     '<div class="track-meta">' +
-    '<span class="meta-pill track-id">' + track.i    '</s   >' +
-    '<s    '<s    '<s    '<s    '<s    '<s    y + '</span>' +
+    '<span class="meta-pill track-id">' + track.id + '</span>' +
+    '<span class="meta-pill">' + track.category + '</span>' +
     '<span class="meta-pill">' + track.priority + '</span>' +
     '<span class="meta-pill">' + track.difficulty + '</span>' +
     '</div>' +
@@ -65,23 +73,55 @@ function cardForTrack(track) {
     '<ul>' +
     '<li><strong>Methods:</strong> ' + track.methods + '</li>' +
     '<li><strong>Metrics:</strong> ' + track.metrics + '</li>' +
-    '<li><strong>First wedge:</strong> ' + track.wedge + '    '<li><strong>First wedge:</strongnction renderFeaturedTracks() {
-  va  va  va  va  va  va  va  va  va  va  va  va ur  va  va  va  va  va  va  va  va  va w.SAFEDROP_TRACKS) re  va  va  va  va  va  va  va  va  va  va  va  va ur  2', 'R44', 'R47', 'R50'];
-  var items =   var items =   var items =   varturn window.SAFEDROP_TRACKS.find(function (t) { return t.id ===   var items =   var items n);
-                                   ForTrack).join(                               ) {
+    '<li><strong>First wedge:</strong> ' + track.wedge + '</li>' +
+    '</ul></article>';
+}
+
+function renderFeaturedTracks() {
+  var target = document.querySelector('[data-featured-tracks]');
+  if (!target || !window.SAFEDROP_TRACKS) return;
+  var wanted = ['R06', 'R07', 'R02', 'R11', 'R12', 'R44', 'R47', 'R50'];
+  var items = wanted.map(function (id) {
+    return window.SAFEDROP_TRACKS.find(function (t) { return t.id === id; });
+  }).filter(Boolean);
+  target.innerHTML = items.map(cardForTrack).join('');
+}
+
+function renderBundles() {
   var target = document.querySelector('[data-bundle-grid]');
-                                                              ne                                                            re                                                            ass=             ar                                   un                                   bundle.focus +                                                               map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('') +
+  if (!target || !window.SAFEDROP_BUNDLES) return;
+  target.innerHTML = window.SAFEDROP_BUNDLES.map(function (bundle) {
+    return '<article class="bundle-card reveal">' +
+      '<div class="kicker">Research bundle</div>' +
+      '<h3>' + bundle.name + '</h3>' +
+      '<p>' + bundle.focus + '</p>' +
+      '<div class="tag-list">' +
+      bundle.tracks.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('') +
       '</div>' +
       '<p class="small-note">' + bundle.candidate_paper + '</p>' +
       '</article>';
-  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  })da  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join);  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).join('')  }).()  }).join('')  }).join('')  }).join('')  }).join('')  }).s = window.SAFEDROP_TRACKS.filter(function (track) {
+  }).join('');
+}
+
+function renderResearchGrid() {
+  var grid = document.querySelector('[data-research-grid]');
+  if (!grid || !window.SAFEDROP_TRACKS) return;
+  var search = document.querySelector('[data-track-search]');
+  var filter = document.querySelector('[data-track-filter]');
+  var count = document.querySelector('[data-track-count]');
+
+  var render = function () {
+    var q = (search ? search.value : '').toLowerCase();
+    var f = filter ? filter.value : 'all';
+    var items = window.SAFEDROP_TRACKS.filter(function (track) {
       var categoryHit = f === 'all' || track.category === f || track.priority === f;
       var text = (track.id + ' ' + track.title + ' ' + track.category + ' ' + track.bundle + ' ' +
         track.summary + ' ' + track.methods + ' ' + track.priority).toLowerCase();
       var queryHit = !q || text.indexOf(q) !== -1;
       return categoryHit && queryHit;
     });
-    grid.innerHTML = items.map(cardF    grid.innerHTML = items.map(cardF    grid.innerHTML = items.mah     grid.innerHTML
+    grid.innerHTML = items.map(cardForTrack).join('');
+    if (count) count.textContent = items.length + ' tracks shown';
     initReveal();
   };
   if (search) search.addEventListener('input', render);
