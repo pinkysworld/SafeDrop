@@ -1,0 +1,17 @@
+issue_id,title,sprint,preferred_agent,scope,acceptance,status
+SD-001,Bootstrap repo and documentation,Sprint 0,bootstrap_agent,"Create repo skeleton, docs, and issue templates","README, AGENTS, site scaffold, no code secrets",done
+SD-002,Define manifest and share schemas,Sprint 0,storage_agent,Versioned data models for chunk store and share records,Schema docs and serde-ready structs planned,done
+SD-003,Implement chunk ingestion path,Sprint 1,storage_agent,Immutable chunk storage with content hash addressing,Chunk verification and deterministic manifest generation,planned
+SD-004,Build audit event append pipeline,Sprint 1,evidence_agent,Append-only event log with checkpoint hashes,Signed checkpoint export,planned
+SD-005,Implement share issuance and expiry,Sprint 2,evidence_agent,"Share creation, expiry timestamps, revocation path",Expired shares rejected and logged,planned
+SD-006,Add resumable segmented transfer,Sprint 2,storage_agent,Range support and resume metadata,Interrupted transfers can restart safely,planned
+SD-007,Add final delivery receipts,Sprint 2,evidence_agent,Receipt creation and verification,Human-readable completion evidence exists,planned
+SD-008,Implement UPnP/NAT-PMP attempts,Sprint 3,network_agent,Router mapping discovery and request path,Reachability attempt logged and surfaced,planned
+SD-009,Build external signed reachability probe,Sprint 3,network_agent,Public reachability confirmation service contract,Descriptor proves selected path,planned
+SD-010,Encrypted relay fallback skeleton,Sprint 3,network_agent,Ciphertext-only relay channels,Relay has no plaintext access,planned
+SD-011,Publish reachability descriptor API,Sprint 3,network_agent,Descriptor serialization and recipient consumption,Recipient sees path type and continuity info,planned
+SD-012,Admin console evidence cards,Sprint 4,admin_ui_agent,"Status cards for upload, reachability, expiry, and exports",Plain-language evidence summaries,planned
+SD-013,Export bundle generation,Sprint 4,evidence_agent,Machine-readable plus human-readable evidence export,Bundle validates against schema,planned
+SD-014,Hybrid PQ crypto interface,Sprint 5,release_agent,Crypto agility for classical plus ML-KEM / ML-DSA,Policy versioning and fallback behavior,planned
+SD-015,Reproducible build manifest,Sprint 5,release_agent,Release scripts and deterministic build metadata,Published hashes and verification guide,planned
+SD-016,Minimal formal spec,Sprint 5,formal_methods_agent,TLA+ lifecycle model,Invariant report included,planned

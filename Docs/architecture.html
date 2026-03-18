@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeDrop — Architecture</title>
+  <meta name="description" content="System architecture and layered design of the SafeDrop file sharing server.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/tracks-data.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-page="architecture">
+  <div class="page-bg"></div>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">SafeDrop</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <span class="nav-dropdown-trigger">Project <span class="caret"></span></span>
+          <div class="nav-dropdown-menu">
+            <a href="architecture.html">
+              <span class="menu-icon">&#9881;</span>
+              <span class="menu-text"><span class="menu-label">Architecture</span><span class="menu-desc">System design &amp; layers</span></span>
+            </a>
+            <a href="roadmap.html">
+              <span class="menu-icon">&#9776;</span>
+              <span class="menu-text"><span class="menu-label">Roadmap</span><span class="menu-desc">Implementation timeline</span></span>
+            </a>
+            <a href="status.html">
+              <span class="menu-icon">&#9989;</span>
+              <span class="menu-text"><span class="menu-label">Status</span><span class="menu-desc">Sprint &amp; issue tracker</span></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <span class="nav-dropdown-trigger">Research <span class="caret"></span></span>
+          <div class="nav-dropdown-menu">
+            <a href="research.html">
+              <span class="menu-icon">&#128269;</span>
+              <span class="menu-text"><span class="menu-label">50 Tracks</span><span class="menu-desc">Full research agenda</span></span>
+            </a>
+            <a href="paper.html">
+              <span class="menu-icon">&#128196;</span>
+              <span class="menu-text"><span class="menu-label">Paper</span><span class="menu-desc">IJRC design paper</span></span>
+            </a>
+          </div>
+        </div>
+        <a href="build.html">Build</a>
+        <a class="nav-github" href="https://github.com/pinkysworld/SafeDrop" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <nav class="breadcrumb"><a href="index.html">Home</a> <span class="sep">/</span> <span>Architecture</span></nav>
+          <div class="eyebrow">System design</div>
+          <h1 class="page-title">A layered architecture for <span class="gradient-text">verifiable file sharing</span></h1>
+          <p class="lead">SafeDrop separates concerns into explicit layers so each subsystem can be built, tested, and extended independently. The architecture keeps frontier research out of the critical MVP path.</p>
+        </div>
+        <aside class="hero-panel">
+          <div class="panel-title">Design principles</div>
+          <div class="panel-meta">Every layer has a clear contract. AI agents can implement each layer without crossing boundaries.</div>
+          <img src="assets/architecture.svg" alt="SafeDrop layered architecture diagram">
+        </aside>
+      </div>
+    </section>
+    <div class="section-divider"></div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-label">System layers</div><h2>Architecture layers</h2><p>From storage primitives at the bottom to user-facing explanation surfaces at the top.</p></div></div>
+        <div class="card-grid">
+          <article class="feature-card card-accent-blue reveal"><div class="feature-icon blue">&#128451;</div><div class="kicker">Layer 1</div><h3>Content-addressed storage</h3><p>Chunking, deduplication, deterministic manifests. Every file becomes a Merkle tree with a stable root hash that anchors the entire evidence chain.</p></article>
+          <article class="feature-card card-accent-mint reveal"><div class="feature-icon mint">&#128209;</div><div class="kicker">Layer 2</div><h3>Evidence &amp; audit</h3><p>Append-only audit log, signed segment receipts, delivery confirmations, and exportable evidence bundles. Useful before any ZK wrappers are added.</p></article>
+          <article class="feature-card card-accent-gold reveal"><div class="feature-icon gold">&#128279;</div><div class="kicker">Layer 3</div><h3>Share lifecycle</h3><p>Link creation, capability tokens, expiry enforcement, resumable transfers, and revocation. Each state transition emits an audit event.</p></article>
+          <article class="feature-card card-accent-rose reveal"><div class="feature-icon rose">&#127760;</div><div class="kicker">Layer 4</div><h3>Reachability</h3><p>UPnP/NAT-PMP port mapping, signed external probes, ICE hole-punching, dynamic DNS binding, and encrypted relay fallback.</p></article>
+          <article class="feature-card card-accent-violet reveal"><div class="feature-icon violet">&#128065;</div><div class="kicker">Layer 5</div><h3>Privacy &amp; policy</h3><p>Metadata aliases, size bucketing, timestamp coarsening, consent tracking, and regulatory-compliant export bundles.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon blue">&#128172;</div><div class="kicker">Layer 6</div><h3>Explanation surface</h3><p>Human-readable evidence cards, admin dashboard, status explanations, and operator trust interface. Explain, never hide.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-label">Diagrams</div><h2>Visual system model</h2></div></div>
+        <div class="card-grid-2 reveal">
+          <article class="paper-card figure-card"><div class="kicker">Architecture stack</div><h3>Layered component view</h3><p>Each component communicates through defined interfaces. No layer reaches through another.</p><img src="assets/architecture.svg" alt="Architecture stack diagram"></article>
+          <article class="paper-card figure-card"><div class="kicker">Reachability flow</div><h3>Path selection with evidence</h3><p>The reachability subsystem tries direct binding first and falls back through progressively more assisted methods.</p><img src="assets/reachability.svg" alt="Reachability flow diagram"></article>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-label">Security</div><h2>Threat model highlights</h2><p>The threat model covers network adversaries, storage compromise, relay trust, and metadata inference.</p></div></div>
+        <div class="card-grid reveal">
+          <article class="info-card card-accent-rose"><div class="kicker">Network</div><h3>Path integrity</h3><p>Every reachability path is signed and bound to the session. Man-in-the-middle attacks are detected through certificate pinning and signed probes.</p></article>
+          <article class="info-card card-accent-gold"><div class="kicker">Storage</div><h3>At-rest protection</h3><p>Envelope encryption with per-object keys. Deletion uses crypto-shredding with attested key destruction events.</p></article>
+          <article class="info-card card-accent-violet"><div class="kicker">Relay</div><h3>Zero-knowledge relay</h3><p>The relay sees only encrypted ciphertext and blinded session identifiers. No file contents or metadata are exposed to the relay operator.</p></article>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider"></div>
+    <section class="section">
+      <div class="container reveal">
+        <div class="github-banner"><div><h3>Explore the full specification</h3><p>The complete API spec, data model, and threat model are available in the GitHub repository.</p></div><a class="button primary" href="https://github.com/pinkysworld/SafeDrop" target="_blank" rel="noopener noreferrer">View on GitHub</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">SafeDrop</div>
+          <p>Home-hosted secure file sharing with proof-carrying delivery, reachability evidence, and explanation-first design.</p>
+        </div>
+        <div>
+          <div class="footer-title">Project</div>
+          <ul>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="build.html">Build Guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Research</div>
+          <ul>
+            <li><a href="research.html">50 Research Tracks</a></li>
+            <li><a href="paper.html">Design Paper</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Open Source</div>
+          <ul>
+            <li><a href="https://github.com/pinkysworld/SafeDrop" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/pinkysworld/SafeDrop/issues" target="_blank" rel="noopener noreferrer">Report Issues</a></li>
+            <li><a href="https://github.com/pinkysworld/SafeDrop/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SafeDrop Project</span>
+        <div class="footer-social">
+          <a href="https://github.com/pinkysworld/SafeDrop" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

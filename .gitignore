@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Rust build artifacts (future)
+target/
+*.rs.bk
+
+# Node (if any tooling)
+node_modules/
+
+# Env
+.env
+.env.local
+
+# Binary releases
+*.exe
+*.dmg
+*.tar.gz
+*.zip
