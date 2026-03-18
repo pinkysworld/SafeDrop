@@ -13,8 +13,6 @@ This is a static website intended for GitHub Pages.
 ## Files to customize later
 
 - `index.html` - homepage narrative and hero text
-- `paper.html` - paper summary and download links
 - `research.html` - interactive 50-track catalog
-- `downloads.html` - direct file hosting page
 - `assets/styles.css` - site design system
 - `assets/tracks-data.js` - track data used by filtering UI

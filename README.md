@@ -73,7 +73,6 @@ See [codex/SYSTEM_OVERVIEW.md](codex/SYSTEM_OVERVIEW.md) for the full system mod
 │   └── api/              # HTTP API handlers
 ├── tests/                # Integration tests
 ├── codex/                # AI agent instructions
-├── paper/                # Research paper
 ├── research/             # 50-track research agenda
 └── docs/                 # Project website
 ```
@@ -89,10 +88,9 @@ This project is designed to be built by AI coding agents. See:
 
 ## Research
 
-SafeDrop includes a 50-track research agenda and an IJRC-style design paper:
+SafeDrop includes a 50-track research agenda:
 
 - [Research Agenda](research/SafeDrop_50_Track_Master_Agenda.md)
-- [Design Paper](paper/SafeDrop_IJRC_Design_Paper.md)
 - [Website](https://pinkysworld.github.io/SafeDrop/)
 
 ## License

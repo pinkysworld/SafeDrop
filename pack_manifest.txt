@@ -17,12 +17,6 @@ codex/SYSTEM_OVERVIEW.md
 codex/TEST_AND_EVAL_PLAN.md
 codex/THREAT_MODEL.md
 pack_manifest.txt
-paper/SafeDrop_IJRC_Design_Paper.docx
-paper/SafeDrop_IJRC_Design_Paper.md
-paper/SafeDrop_IJRC_Design_Paper.pdf
-paper/SafeDrop_IJRC_Submission_Checklist.md
-paper/architecture.png
-paper/reachability.png
 research/SafeDrop_50_Track_Master_Agenda.csv
 research/SafeDrop_50_Track_Master_Agenda.md
 research/SafeDrop_Research_Bundles.md
@@ -45,14 +39,9 @@ website/downloads/ISSUE_MAP.csv
 website/downloads/START_HERE.md
 website/downloads/SafeDrop_50_Track_Master_Agenda.csv
 website/downloads/SafeDrop_50_Track_Master_Agenda.md
-website/downloads/SafeDrop_IJRC_Design_Paper.docx
-website/downloads/SafeDrop_IJRC_Design_Paper.md
-website/downloads/SafeDrop_IJRC_Design_Paper.pdf
-website/downloads/SafeDrop_IJRC_Submission_Checklist.md
 website/downloads/TEST_AND_EVAL_PLAN.md
 website/downloads/THREAT_MODEL.md
 website/downloads/tracks.json
 website/downloads.html
 website/index.html
-website/paper.html
 website/research.html
